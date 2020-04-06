@@ -11,7 +11,7 @@ int main()
 		perror("open error");
 		return -1;
 	}
-	//dup2(fd,1);
+	dup2(fd,1);
 	printf("fd=%d\n",fd);
 	fflush(stdout);
 	close(fd);
