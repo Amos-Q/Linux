@@ -1,3 +1,3 @@
-test:test.c
+minshell:minshell.c
 	 gcc $^ -o $@
 
