@@ -1,8 +1,9 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 #include <signal.h>
 
-long a = 1;
+volatile long a = 1;
 
 void sigcb(int no)
 {
