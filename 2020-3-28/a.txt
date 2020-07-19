@@ -1,5 +1,0 @@
-总用量 20
--rw-rw-r--. 1 qc qc    0 4月   2 22:38 a.txt
--rw-rw-r--. 1 qc qc   28 3月  28 13:01 Makefile
--rwxrwxr-x. 1 qc qc 9040 4月   2 22:36 test
--rw-rw-r--. 1 qc qc 2290 4月   2 22:38 test.c

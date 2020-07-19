@@ -4,7 +4,7 @@
 #include <ucontext.h>
 
 #define STACKSZ (1024*64)
-
+#define CORSZ (1024)
 struct schedule;
 
 enum State {DEAD, READY, RUNNING, SUSPEND};
@@ -25,5 +25,25 @@ typedef struct schedule {
 	int max_id; // 最大的下标
 	ucontext_t ctx_main; // 主流程上下文
 }schedule_t;
+// __COROUTINE_H__
 
-//__COROUTINE_H__
+schedule_t *schedule_create();
+// 协程执行函数
+static void *main_fun(schedule_t *s);
+// 创建协程，返回当前协程在调度器的下标
+int coroutine_create(schedule_t *s, void *(*call_back)(schedule_t *, void *args), void *args);
+// 协程执行函数
+static void *main_fun(schedule_t *s);
+// 启动协程
+void coroutine_running(schedule_t *s, int id);
+//让出CPU
+void coroutine_yield(schedule_t *s);
+// 恢复CPU
+void coroutine_resume(schedule_t *s, int id);
+// 删除协程
+static void delete_coroutine(schedule_t *s, int id);
+// 释放调度器
+void schedule_destroy(schedule_t *s);
+// 判断是否所有协程都运行完了
+int schedule_finished(schedule_t *s);
+#endif
