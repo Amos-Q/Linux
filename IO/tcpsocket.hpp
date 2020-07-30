@@ -1,3 +1,4 @@
+#pragma once
 #include <cstdio>
 #include <string>
 #include <unistd.h>
@@ -7,6 +8,7 @@
 
 //listen的第二个参数决定同一时间能够接收多少客户端连接
 ////并不决定整体通信能够接收多少客户端连接
+
 #define MAX_LISTEN 5
 #define CHECK_RET(q) if((q)==false){return -1;}
 

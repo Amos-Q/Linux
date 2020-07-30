@@ -7,7 +7,7 @@
 class Epoll{
 	public:
 		Epoll() {
-			epoll_create(size)；  size已经被忽略，大于0即可
+			//epoll_create(size)；  size已经被忽略，大于0即可
 				_epfd = epoll_create(1);
 			if (_epfd < 0) {
 				perror("epoll create error");

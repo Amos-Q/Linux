@@ -1,5 +1,6 @@
 #include <iostream>
 #include "select.hpp"
+#include "epoll.hpp"
 
 int main (int argc, char *argv[])
 {
@@ -14,7 +15,8 @@ int main (int argc, char *argv[])
     CHECK_RET(lst_sock.Bind(ip, port));
     CHECK_RET(lst_sock.Listen());
 
-    Select s;
+    //Select s;
+	Epoll s;
     s.Add(lst_sock);
     while(1) {
         std::vector<TcpSocket> list;
