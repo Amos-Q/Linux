@@ -1,8 +1,8 @@
 CC = gcc
 CFLAGS = -g
-OBJS = sysutil.o session.o ftpproto.o privparent.o bitminiftp.o
+OBJS = sysutil.o session.o ftpproto.o privparent.o miniftp.o
 LIBS = 
-BIN  = bitminiftp
+BIN  = miniftp
 
 $(BIN):$(OBJS)
 	$(CC) $(CFLAGS) $^ -o $@ $(LIBS)

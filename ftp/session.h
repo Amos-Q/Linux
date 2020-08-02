@@ -5,8 +5,19 @@
 
 typedef struct session
 {
-	/* ????á??ó */
+	/* 控制连接 */
+	uid_t uid;
 	int ctrl_fd;
+	char cmdline[MAX_COMMAND_LINE];
+	char cmd[MAX_COMMAND];
+	char arg[MAX_ARG];
+
+	/* 数据连接 */
+	struct sockaddr_in *port_addr;
+	int  data_fd;
+
+	/* ftp 协议状态 */
+	int is_ascii;
 }session_t;
 
 void begin_session(session_t *sess);

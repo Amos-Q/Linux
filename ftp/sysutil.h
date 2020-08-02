@@ -3,4 +3,7 @@
 
 #include"common.h"
 
+int tcp_server(const char *host, unsigned short port);
+int tcp_client();
+
 #endif /* _SYSUTIL_H_ */

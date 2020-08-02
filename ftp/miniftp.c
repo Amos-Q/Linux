@@ -4,13 +4,25 @@
 
 int main(int argc, char *argv[])
 {
+	if(getuid() != 0)
+	{
+		printf("bit miniftp : must be started as root.\n");
+		exit(EXIT_FAILURE);
+	}
+
 	session_t sess = 
 	{
-		/* ????á??ó */
-		-1
+		/* 控制连接 */
+		-1,-1,"", "", "",
+
+		/* 数据连接 */
+		NULL, -1,
+
+		/* ftp 协议状态 */
+		0
 	};
 
-	int listenfd = tcp_server("192.168.232.10", 9188); 
+	int listenfd = tcp_server("192.168.245.3", 8000); 
 
 	int sockConn;
 	struct sockaddr_in addrCli;
@@ -29,7 +41,7 @@ int main(int argc, char *argv[])
 			//Child Process
 			close(listenfd);
 			
-			//?á?°
+			//会话
 			sess.ctrl_fd = sockConn;
 			begin_session(&sess);
 			exit(EXIT_SUCCESS);

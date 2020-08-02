@@ -23,3 +23,11 @@ int tcp_server(const char *host, unsigned short port)
 
 	return listenfd;
 }
+
+int tcp_client()
+{
+	int sock;
+	if(( sock = socket(AF_INET, SOCK_STREAM, 0)) < 0)
+		ERR_EXIT("tcp_client");
+	return sock;
+}
