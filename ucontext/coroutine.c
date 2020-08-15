@@ -55,6 +55,14 @@ int coroutine_create(schedule_t *s, void *(*call_back)(schedule_t *, void *args)
 	return i;
 }
 
+//获取协程状态
+static enum State get_status(schedule_t *s,int id){
+	coroutine_t *c = s->coroutines[id];
+	if(c == NULL)
+		return DEAD;
+	return c->state;
+}
+
 // 启动协程
 void coroutine_running(schedule_t *s, int id) {
 	int st = get_status(s, id);

@@ -1,9 +1,15 @@
-all:main1 main2
-main2:main2.c coroutine.c
-	gcc $^ -o $@
-main1:main1.c coroutine.c
-	gcc $^ -o $@
-02:02.c
-	gcc $^ -o $@
-ucontext:ucontext.cpp
-	g++ -std=c++11 $^ -o $@
+.PHONY:clean main
+
+CC=gcc
+OBJS=coroutine.o main.o
+TARGET=svr cli
+
+all:$(TARGET)
+
+svr:$(OBJS)
+	$(CC) $^ -o $@
+
+cli:
+	gcc cli.c -o cli
+clean:
+	rm -rf $(OBJS) main
