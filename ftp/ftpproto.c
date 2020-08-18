@@ -414,7 +414,7 @@ static void do_mkd (session_t *sess)
 	ftp_reply(sess, FTP_MKDIROK, buf);
 }
 
-
+//删除目录
 static void do_rmd (session_t *sess)
 {
 	if(rmdir(sess->arg) < 0)
@@ -427,6 +427,7 @@ static void do_rmd (session_t *sess)
 	ftp_reply(sess, FTP_RMDIROK, "Remove directory operation successful.");
 }
 
+//删除文件
 static void do_dele(session_t *sess)
 {
 	if(unlink(sess->arg) < 0)
@@ -438,6 +439,7 @@ static void do_dele(session_t *sess)
 	ftp_reply(sess, FTP_DELEOK, "Delete operation successful.");
 }
 
+//文件重命名
 static void do_rnfr (session_t *sess)
 {
 	sess->rnfr_name = (char*)malloc(strlen(sess->arg)+1);
@@ -466,6 +468,7 @@ static void do_rnto (session_t *sess)
 	ftp_reply(sess, FTP_RENAMEOK, "Rename successful.");
 }
 
+//文件大小
 static void do_size(session_t *sess)
 {
 	struct stat sbuf;
@@ -528,6 +531,7 @@ static void limit_rate(session_t *sess, int bytes_transfered, int isupload)
 	sess->transfer_start_usec = get_time_usec();
 }
 
+//上传
 static void do_stor(session_t *sess)
 {
 	//建立数据连接
@@ -591,6 +595,7 @@ static void do_stor(session_t *sess)
 	sess->data_fd = -1;
 }
 
+//下载
 static void do_retr(session_t *sess)
 {
 	//建立数据连接
